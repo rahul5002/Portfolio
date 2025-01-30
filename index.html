@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahul Mankani - Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #302b63;
+      --secondary-color: #0f0c29;
+      --accent-color: #00bfff;
+      --text-color: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color), #24243e);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .profile-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
+      margin-bottom: 1.5rem;
+      background: #ddd;
+    }
+
+    .name {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .nav-button {
+      background: rgba(0, 123, 255, 0.2);
+      color: var(--text-color);
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .nav-button:hover {
+      background: rgba(0, 123, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .section {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+
+    .section h2 {
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.5rem;
+    }
+
+    .qualification-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .qualification-item h3 {
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-info {
+      text-align: center;
+    }
+
+    .contact-info a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-button {
+      background: rgba(0, 123, 255, 0.2);
+      color: var(--text-color);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-button:hover {
+      background: rgba(0, 123, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .view-count {
+      text-align: center;
+      color: var(--accent-color);
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .illustration-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .illustration-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .illustration-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .feedback-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-color);
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      background: var(--accent-color);
+      color: var(--text-color);
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-button:hover {
+      background: rgba(0, 191, 255, 0.8);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .nav-button {
+        width: 100%;
+        text-align: center;
+      }
+
+      .illustration-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <img src="myphoto.jpg" alt="Rahul Mankani" class="profile-photo">
+      <h1 class="name">Rahul Mankani</h1>
+      <p>Computer Science Student & Creative Developer</p>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-button" onclick="toggleSection('qualifications')">Qualifications</button>
+      <button class="nav-button" onclick="toggleSection('projects')">Projects</button>
+      <button class="nav-button" onclick="toggleSection('skills')">Skills</button>
+      <button class="nav-button" onclick="toggleSection('illustrations')">Illustrations</button>
+      <button class="nav-button" onclick="toggleSection('contact')">Contact</button>
+      <button class="nav-button" onclick="toggleSection('feedback')">Feedback</button>
+    </nav>
+
+    <section id="qualifications" class="section">
+      <h2>Education & Qualifications</h2>
+      <div class="qualification-item">
+        <h3>Bachelor's Degree in Computer Science</h3>
+        <p>University Of Petroleum And Energy Studies</p>
+        <p>Currently Pursuing</p>
+      </div>
+      <div class="qualification-item">
+        <h3>Higher-Secondary Graduate</h3>
+        <p>The Turning Point Public School</p>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Featured Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Finance Manager</h3>
+          <p>A smart application that helps track savings and provides guidance to reach financial goals efficiently.</p>
+        </div>
+        <div class="project-card">
+          <h3>Student Library Portal</h3>
+          <p>A comprehensive system for managing and tracking library books and resources.</p>
+        </div>
+        <div class="project-card">
+          <h3>Day Calculator</h3>
+          <p>Utility tool for calculating date differences and future day predictions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills & Expertise</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Software Proficiency</h3>
+          <p>Adobe Photoshop</p>
+          <p>Adobe Illustrator</p>
+        </div>
+        <div class="project-card">
+          <h3>Operating Systems</h3>
+          <p>Windows</p>
+          <p>Linux</p>
+        </div>
+        <div class="project-card">
+          <h3>Soft Skills</h3>
+          <p>Leadership</p>
+          <p>Communication</p>
+          <p>Networking</p>
+          <p>Team Collaboration</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="illustrations" class="section">
+      <h2>My Illustrations</h2>
+      <div class="illustration-grid">
+        <div class="illustration-card">
+          <img src="illustration1.jpg" alt="Graduation Ceremony">
+          <h3>Graduation Ceremony</h3>
+        </div>
+        <div class="illustration-card">
+          <img src="illustration2.jpg" alt="Halloween">
+          <h3>Halloween</h3>
+        </div>
+        <div class="illustration-card">
+          <img src="illustration3.jpg" alt="Dragon Pop Out">
+          <h3>Dragon Pop Out</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Get in Touch</h2>
+      <div class="contact-info">
+        <p>Email: <a href="mailto:mankanirahul@gmail.com">mankanirahul@gmail.com</a></p>
+        <p>Phone: +91 70736 46099</p>
+        
+        <div class="social-links">
+          <a href="https://github.com/rahul5002" target="_blank" class="social-button">GitHub</a>
+          <a href="https://www.linkedin.com/in/rahul-mankani/" target="_blank" class="social-button">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback" class="section">
+      <h2>Leave Feedback</h2>
+      <form class="feedback-form" action="submit_feedback.php" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Your Feedback</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-button">Submit Feedback</button>
+      </form>
+    </section>
+
+    <div class="view-count">
+      Views: <span id="viewCount">0</span>
+    </div>
+  </div>
+
+  <script>
+    function toggleSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        if (section.id === sectionId) {
+          section.style.display = section.style.display === 'none' || section.style.display === '' ? 'block' : 'none';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+
+    // View counter
+    let views = localStorage.getItem('portfolioViews') || 0;
+    views = parseInt(views) + 1;
+    localStorage.setItem('portfolioViews', views);
+    document.getElementById('viewCount').textContent = views;
+  </script>
+</body>
+</html>
